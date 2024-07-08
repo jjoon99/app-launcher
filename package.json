@@ -1,11 +1,33 @@
 {
-  "name": "electron-simple-webview",
+  "name": "app-launcher",
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
   },
-  "dependencies": {
-    "electron": "^22.3.25"
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^22.3.25",
+    "electron-builder": "^version"
+  },
+  "build": {
+    "appId": "com.jjoon9",
+    "productName": "app-launcher",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
   }
 }
