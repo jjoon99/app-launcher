@@ -47,6 +47,11 @@ function createWindow() {
   win.webContents.on("did-finish-load", () => {
     win.setTitle(config.title);
   });
+  win.on("page-title-updated", (event, title) => {
+    // 페이지 타이틀이 변경되었을 때 실행되는 이벤트 핸들러
+    win.setTitle(config.title); // 원래의 타이틀로 변경
+    event.preventDefault(); // 기본 동작 막기
+  });
 }
 
 function toggleDevTools() {
