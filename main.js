@@ -22,20 +22,22 @@ function createWindow() {
       y: externalDisplay.bounds.y,
       width: externalDisplay.bounds.width,
       height: externalDisplay.bounds.height,
-      alwaysOnTop: true,
+      // alwaysOnTop: true,
       titleBarStyle: config.fullscreen && "hidden",
       fullscreen: config.fullscreen, // 전체 화면 모드 활성화
 
       webPreferences: {
         devTools: true,
-        nodeIntegration: true
+        nodeIntegration: true,
+        webPreferences: "nativeWindowOpen",
+        allowpopups: true
       }
     });
   } else {
     win = new BrowserWindow({
       width: 800,
       height: 600,
-      alwaysOnTop: true,
+      // alwaysOnTop: true,
       webPreferences: {
         nodeIntegration: true
       }
@@ -54,13 +56,13 @@ function createWindow() {
   });
 }
 
-function toggleDevTools() {
-  win.webContents.toggleDevTools();
-}
+// function toggleDevTools() {
+//   win.webContents.toggleDevTools();
+// }
 
-function createShortcuts() {
-  globalShortcut.register("CmdOrCtrl+J", toggleDevTools);
-}
+// function createShortcuts() {
+//   globalShortcut.register("CmdOrCtrl+J", toggleDevTools);
+// }
 
 app.whenReady().then(createWindow).then(createShortcuts);
 
